@@ -11,7 +11,7 @@ class EntryList extends Component {
 
   render() {
     console.log("EntryList props", this.props)
-    const entries = this.props.data.entries || []
+    const entries = (this.props.data.entries || []).filter(x => x !== null)
     const initials = this.props.data.initials
     const countlable = `${entries.length} ${entries.length !== 1 ? "Items" : "Item"}`
     return (<div className="EntryList">
@@ -26,26 +26,6 @@ class EntryList extends Component {
     </div>)
   }
 }
-
-// EntryList.defaultProps = {
-//   entries: []
-// }
-
-// export default EntryList
-
-// {
-//   "data": {
-//     "user": {
-//       "name": "Michael",
-//       "surname": "Mrowetz",
-//       "initials": "MM",
-//       "entries": []
-//     }
-//   }
-// }
-
-// This `_list` fragment name suffix corresponds to the prop named `list` that
-// is expected to be populated with server data by the `<TodoList>` component.
 
 
 export default createFragmentContainer(

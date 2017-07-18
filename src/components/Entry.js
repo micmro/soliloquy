@@ -5,6 +5,7 @@ import {
 } from 'react-relay'
 import Avatar from './Avatar'
 import './Entry.css';
+import DeleteEntryMutation from '../mutations/DeleteEntryMutation'
 
 
 class Entry extends Component {
@@ -20,6 +21,7 @@ class Entry extends Component {
 
   deleteEntry() {
     console.log("delete", this.props.entry.id)
+    DeleteEntryMutation(this.props.entry.id)
   }
 
   editEntry() {
