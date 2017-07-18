@@ -1,0 +1,10 @@
+.Avatar {
+  border-radius: 1.25em;
+  line-height: 2.6em;
+  text-align: center;
+  width: 2.5em;
+  height: 2.5em;
+  font-size: 0.75em;
+  background: #009caf;
+  color: #fff;
+}

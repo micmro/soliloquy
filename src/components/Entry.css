@@ -1,0 +1,51 @@
+.Entry {
+  text-align: left;
+  position: relative;
+}
+
+.Entry > .Avatar {
+  position: absolute;
+  top: 0;
+  left: 1em;
+}
+
+.Entry-message-wrap {
+  position: relative;
+  margin-left: 3em;
+  background: #f0f0f0;
+  padding: 0.5em;
+}
+
+.Entry-message-wrap:after {
+  border-color:  transparent #f0f0f0 transparent transparent;
+  border-style: solid;
+  left: -0.25em;
+  border-width: 0.25em 0.25em 0.25em 0;
+  top: 0.5em;
+  content: "";
+  position: absolute;
+}
+
+.Entry-buttons {
+  float: right;
+}
+
+.Entry-buttons > button {
+  background: none;
+  outline: 0;
+  border: 0;
+  color: #009caf;
+  cursor: pointer;
+}
+
+.Entry-edit-button {
+
+}
+
+.Entry-delete-button {
+}
+
+.Entry-created {
+  font-size: small;
+  float: right;
+}
