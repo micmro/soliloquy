@@ -8,9 +8,11 @@
 
 /*::
 import type {ConcreteFragment} from 'relay-runtime';
-export type EntryList_list = {|
+export type EntryList = {|
   +initials: string;
-  +entries: ?$ReadOnlyArray<?{| |}>;
+  +entries: ?$ReadOnlyArray<?{|
+    +id: string;
+  |}>;
 |};
 */
 
@@ -19,7 +21,7 @@ const fragment /*: ConcreteFragment*/ = {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": null,
-  "name": "EntryList_list",
+  "name": "EntryList",
   "selections": [
     {
       "kind": "ScalarField",
@@ -36,6 +38,13 @@ const fragment /*: ConcreteFragment*/ = {
       "name": "entries",
       "plural": true,
       "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "args": null,
+          "name": "id",
+          "storageKey": null
+        },
         {
           "kind": "FragmentSpread",
           "name": "Entry_entry",

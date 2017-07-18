@@ -11,14 +11,7 @@ import environment from '../createRelayEnvironment'
 const AppAllEntriesQuery = graphql`
   query AppAllEntriesQuery($userId: ID!) {
     user(id: $userId) {
-      name,
-      initials,
-      entries {
-        id,
-        message,
-        created,
-        edited
-      }
+      ...EntryList
     }
   }
 `
@@ -26,35 +19,6 @@ const AppAllEntriesQuery = graphql`
 class App extends Component {
 
   render() {
-
-    // const dummyEntries = [1,2,3,4,5,6].map(x => ({
-    //   id: x,
-    //   initial: 'MM',
-    //   message: `message ${x}`,
-    //   created: Date.now()
-    // }));
-
-    // return (
-    //   <div className="App">
-    //     <EntryList entries={dummyEntries} />
-    //     <CreateEntry />
-    //   </div>
-    // );
-
-
-// {
-//   user(id: 1) {
-//     name,
-//     initials,
-//     entries {
-//       id,
-//       message,
-//       created,
-//       edited
-//     }
-//   }
-// }
-
     return (
       <QueryRenderer
         environment={environment}
@@ -69,7 +33,7 @@ class App extends Component {
             console.log(props)
             return (
               <div className="App">
-                <EntryList entries={props.user.entries} />
+                <EntryList data={props.user} />
                 <CreateEntry />
               </div>
             );

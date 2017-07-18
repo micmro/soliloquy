@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 0b7be71511072cfd67722f26061d16ef
+ * @relayHash 9f1aa599e5a1aafa25ecce92c34f0725
  */
 
 /* eslint-disable */
@@ -10,16 +10,7 @@
 /*::
 import type {ConcreteBatch} from 'relay-runtime';
 export type AppAllEntriesQueryResponse = {|
-  +user: ?{|
-    +name: string;
-    +initials: string;
-    +entries: ?$ReadOnlyArray<?{|
-      +id: string;
-      +message: string;
-      +created: number;
-      +edited: ?number;
-    |}>;
-  |};
+  +user: ?{| |};
 |};
 */
 
@@ -29,16 +20,23 @@ query AppAllEntriesQuery(
   $userId: ID!
 ) {
   user(id: $userId) {
-    name
-    initials
-    entries {
-      id
-      message
-      created
-      edited
-    }
+    ...EntryList
     id
   }
+}
+
+fragment EntryList on User {
+  initials
+  entries {
+    id
+    ...Entry_entry
+  }
+}
+
+fragment Entry_entry on Entry {
+  id
+  message
+  created
 }
 */
 
@@ -72,57 +70,9 @@ const batch /*: ConcreteBatch*/ = {
         "plural": false,
         "selections": [
           {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "name",
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "initials",
-            "storageKey": null
-          },
-          {
-            "kind": "LinkedField",
-            "alias": null,
-            "args": null,
-            "concreteType": "Entry",
-            "name": "entries",
-            "plural": true,
-            "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "id",
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "message",
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "created",
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "edited",
-                "storageKey": null
-              }
-            ],
-            "storageKey": null
+            "kind": "FragmentSpread",
+            "name": "EntryList",
+            "args": null
           }
         ],
         "storageKey": null
@@ -166,13 +116,6 @@ const batch /*: ConcreteBatch*/ = {
             "kind": "ScalarField",
             "alias": null,
             "args": null,
-            "name": "name",
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
             "name": "initials",
             "storageKey": null
           },
@@ -192,25 +135,24 @@ const batch /*: ConcreteBatch*/ = {
                 "storageKey": null
               },
               {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "message",
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "created",
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "edited",
-                "storageKey": null
+                "kind": "InlineFragment",
+                "type": "Entry",
+                "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "message",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "created",
+                    "storageKey": null
+                  }
+                ]
               }
             ],
             "storageKey": null
@@ -227,7 +169,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query AppAllEntriesQuery(\n  $userId: ID!\n) {\n  user(id: $userId) {\n    name\n    initials\n    entries {\n      id\n      message\n      created\n      edited\n    }\n    id\n  }\n}\n"
+  "text": "query AppAllEntriesQuery(\n  $userId: ID!\n) {\n  user(id: $userId) {\n    ...EntryList\n    id\n  }\n}\n\nfragment EntryList on User {\n  initials\n  entries {\n    id\n    ...Entry_entry\n  }\n}\n\nfragment Entry_entry on Entry {\n  id\n  message\n  created\n}\n"
 };
 
 module.exports = batch;

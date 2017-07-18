@@ -10,25 +10,26 @@ import './EntryList.css';
 class EntryList extends Component {
 
   render() {
-    const countlable = `${this.props.entries.length} ${this.props.entries.length !== 1 ? "Items" : "Item"}`
-    const entries = this.props.entries.map((entry) =>
-      <li className="EntryList-entry" key={entry.id}>
-        <Entry entry={entry} />
-      </li>
-    );
+    console.log("EntryList props", this.props)
+    const entries = this.props.data.entries || []
+    const initials = this.props.data.initials
+    const countlable = `${entries.length} ${entries.length !== 1 ? "Items" : "Item"}`
     return (<div className="EntryList">
       <span className="EntryList-count">{countlable}</span>
       <ul>
-        {entries}
+        {entries.map((entry) => (
+          <li className="EntryList-entry" key={`Entry_${entry.id}`}>
+            <Entry entry={entry} initial={initials} />
+          </li>
+        ))}
       </ul>
     </div>)
   }
-
 }
 
-EntryList.defaultProps = {
-  entries: []
-}
+// EntryList.defaultProps = {
+//   entries: []
+// }
 
 // export default EntryList
 
@@ -43,16 +44,17 @@ EntryList.defaultProps = {
 //   }
 // }
 
+// This `_list` fragment name suffix corresponds to the prop named `list` that
+// is expected to be populated with server data by the `<TodoList>` component.
+
+
 export default createFragmentContainer(
   EntryList,
-  // This `_list` fragment name suffix corresponds to the prop named `list` that
-  // is expected to be populated with server data by the `<TodoList>` component.
   graphql`
-    fragment EntryList_list on User {
-      # Specify any fields required by '<TodoList>' itself.
+    fragment EntryList on User {
       initials
-      # Include a reference to the fragment from the child component.
       entries {
+        id
         ...Entry_entry
       }
     }

@@ -27,10 +27,11 @@ class Entry extends Component {
   }
 
   render() {
+    console.log("Entry props", this.props)
     const entry = this.props.entry;
     const formatedDate = (new Date(entry.created)).toLocaleString()
     return (<div className="Entry">
-      <Avatar initial={this.props.initial} />
+      <Avatar initials={this.props.initials} />
       <div className="Entry-message-wrap">
         {entry.message}
         <span className="Entry-buttons">
@@ -43,24 +44,6 @@ class Entry extends Component {
     );
   }
 }
-
-Entry.defaultProps = {
-  entry: {
-    id: 1,
-    message: 'First Entry....',
-    created: Date.now()
-  },
-  initial: 'MM'
-};
-
-// graphql`
-//   # This fragment only applies to objects of type 'Todo'.
-//   fragment App_user on Entry {
-//     id
-//     message
-//     created
-//   }
-// `
 
 // export default Entry
 // Export a *new* React component that wraps the original `<TodoItem>`.
@@ -75,9 +58,9 @@ export default createFragmentContainer(Entry, {
       created
     }
   `,
-  initial: graphql`
-    fragment Entry_initial on User {
-      initials
-    }
-  `,
+  // initial: graphql`
+  //   fragment Entry_initial on User {
+  //     initials
+  //   }
+  // `,
 });
