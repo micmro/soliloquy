@@ -52,7 +52,7 @@ type RootQuery {
   user(id: Int!): User
 
   # Get all Entries
-  entrys: [Entry]
+  entries: [Entry]
 }
 
 # A User in the chat app
