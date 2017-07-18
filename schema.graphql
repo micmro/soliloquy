@@ -6,13 +6,13 @@ schema {
 # an entry in the chat
 type Entry {
   # ID of the Entry
-  id: Int!
+  id: ID!
 
   # Chat Message
   message: String!
 
   # ID of the User that has created the entry
-  userId: String!
+  userId: ID!
 
   # Creation time (as Unix timestamp)
   created: Float!
@@ -34,7 +34,7 @@ type Mutation {
   # updates an existing chat Entry
   updateEntry(
     # ID of Entry to update
-    id: Int!
+    id: ID!
 
     # Object with changed keys
     changes: EntryInput
@@ -43,13 +43,13 @@ type Mutation {
   # updates an existing chat Entry
   deleteEntry(
     # ID of Entry to delete
-    id: Int
+    id: ID
   ): Entry
 }
 
 type RootQuery {
   # Gets a User and all their Entries
-  user(id: Int!): User
+  user(id: ID!): User
 
   # Get all Entries
   entries: [Entry]
@@ -58,7 +58,7 @@ type RootQuery {
 # A User in the chat app
 type User {
   # ID of the User
-  id: Int!
+  id: ID!
 
   # Name of the User
   name: String!

@@ -12,6 +12,7 @@ class CreateEntry extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  // Ref: https://facebook.github.io/relay/docs/mutations.html
   submitEntry(event) {
     event.preventDefault();
     console.log("submit entry", event.target.value, this.state.value)
