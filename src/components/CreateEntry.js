@@ -13,7 +13,7 @@ class CreateEntry extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-   submitEntry(event) {
+  submitEntry(event) {
     event.preventDefault();
     CreateEntryMutation(this.state.value, (response) => {
       console.log('Success!', response)

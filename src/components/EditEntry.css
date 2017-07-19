@@ -1,0 +1,29 @@
+.EditEntry {
+
+}
+
+.EditEntry-buttons {
+  float: right;
+}
+
+.EditEntry-buttons > button {
+  background: none;
+  outline: 0;
+  border: 0;
+  color: #009caf;
+  padding: 0.5em 0.5em;
+  margin: -0.5em 0;
+  font-size: 1em;
+  line-height: 1em;
+  cursor: pointer;
+}
+
+.EditEntry-buttons > button:focus,
+.EditEntry-buttons > button:hover {
+  background: #009caf;
+  color: #fff;
+}
+
+.EditEntry-buttons > button:last-child {
+  margin-left: 0.5em;
+}
