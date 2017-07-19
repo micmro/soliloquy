@@ -1,13 +1,5 @@
 .App {
-  text-align: center;
-}
-
-.App-header {
-  background-color: #222;
-  padding: 20px;
-  color: white;
-}
-
-.App-intro {
-  font-size: large;
+  margin: 1em 1em 0;
+  background: #f9f9f9;
+  min-height: 100vh;
 }

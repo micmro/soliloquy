@@ -34,8 +34,8 @@ class CreateEntry extends Component {
 
   render() {
     return (
-      <form onSubmit={this.submitEntry}>
-        <input className="CreateEntry" value={this.state.value} onChange={this.handleChange} placeholder={this.props.placeholder} />
+      <form className="CreateEntry" onSubmit={this.submitEntry}>
+        <input value={this.state.value} onChange={this.handleChange} placeholder={this.props.placeholder} />
       </form>
     );
   }

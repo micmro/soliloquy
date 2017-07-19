@@ -35,14 +35,15 @@
   outline: 0;
   border: 0;
   color: #009caf;
+  padding: 0.5em 0.5em;
+  margin: -0.5em 0;
+  font-size: 1em;
+  line-height: 1em;
   cursor: pointer;
 }
 
-.Entry-edit-button {
-
-}
-
-.Entry-delete-button {
+.Entry-buttons > button:last-child {
+  margin-left: 0.5em;
 }
 
 .Entry-created {

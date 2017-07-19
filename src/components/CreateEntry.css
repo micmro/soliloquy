@@ -1,8 +1,18 @@
 .CreateEntry {
+  box-sizing: border-box;
   width: 100%;
-  padding: 0.5em;
+  padding: 0 1em 1em;
+  background: #fff;
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
+}
+
+.CreateEntry > input {
+  box-sizing: border-box;
+  padding: 0.5em;
+  font-size: 0.75em;
+  display: block;
+  width: 100%;
 }
