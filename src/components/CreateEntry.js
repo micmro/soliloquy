@@ -3,8 +3,6 @@ import './CreateEntry.css';
 import CreateEntryMutation from '../mutations/CreateEntryMutation'
 
 
-const defaultUserID = "1"
-
 class CreateEntry extends Component {
 
   constructor(props) {
@@ -15,17 +13,12 @@ class CreateEntry extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  // Ref: https://facebook.github.io/relay/docs/mutations.html
-  submitEntry(event) {
+   submitEntry(event) {
     event.preventDefault();
-    console.log("submit entry", event.target.value, this.state.value);
-
-    CreateEntryMutation(this.state.value)
-    // CreateEntryMutation({
-    //   message: this.state.value
-    // }, defaultUserID, (resp) => {
-    //   console.log("response")
-    // })
+    CreateEntryMutation(this.state.value, (response) => {
+      console.log('Success!', response)
+      this.setState({value: ''})
+    })
   }
 
   handleChange(event) {
