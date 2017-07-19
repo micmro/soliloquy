@@ -27,9 +27,6 @@ function DeleteEntryMutation(entryID) {
     {
       mutation,
       variables,
-      onCompleted: (response) => {
-        console.log('Success!', response)
-      },
       onError: err => console.error(err),
       configs,
     },

@@ -17,7 +17,7 @@
 }
 
 .Entry-message-wrap:after {
-  border-color:  transparent #f0f0f0 transparent transparent;
+  border-color: transparent #f0f0f0 transparent transparent;
   border-style: solid;
   left: -0.25em;
   border-width: 0.25em 0.25em 0.25em 0;
@@ -42,8 +42,7 @@
   cursor: pointer;
 }
 
-.Entry-buttons > button:focus,
-.Entry-buttons > button:hover {
+.Entry-buttons > button:focus, .Entry-buttons > button:hover {
   background: #009caf;
 }
 

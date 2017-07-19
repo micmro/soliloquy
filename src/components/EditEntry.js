@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
+import UpdateEntryMutation from '../mutations/UpdateEntryMutation';
 import './EditEntry.css';
-import UpdateEntryMutation from '../mutations/UpdateEntryMutation'
 
 
 class EditEntry extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {value: this.props.entry.message}
+    this.state = {value: this.props.entry.message};
 
     this.submitEntry = this.submitEntry.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -19,7 +19,7 @@ class EditEntry extends Component {
       this.props.entry.id,
       this.state.value,
       this.props.onDone
-    )
+    );
   }
 
   handleChange(event) {

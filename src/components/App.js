@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import CreateEntry from './CreateEntry'
-import EntryList from './EntryList'
 import {
   QueryRenderer,
   graphql,
-} from 'react-relay' // or require('react-relay/compat') for compatibility
-import './App.css'
-import environment from '../createRelayEnvironment'
+} from 'react-relay';
+import environment from '../createRelayEnvironment';
+import CreateEntry from './CreateEntry';
+import EntryList from './EntryList';
+import './App.css';
 
 const AppAllEntriesQuery = graphql`
   query AppAllEntriesQuery($userId: ID!) {
@@ -14,7 +14,7 @@ const AppAllEntriesQuery = graphql`
       ...EntryList
     }
   }
-`
+`;
 
 class App extends Component {
 
@@ -26,11 +26,10 @@ class App extends Component {
         variables={{
           userId: 1,
         }}
-        render={({error, props}) => {
+        render={({ error, props }) => {
           if (error) {
             return <div>{error.message}</div>;
           } else if (props) {
-            console.log(props)
             return (
               <div className="App">
                 <EntryList data={props.user} />
@@ -41,7 +40,7 @@ class App extends Component {
           return <div>Loading</div>;
         }}
       />
-    )
+    );
   }
 }
 

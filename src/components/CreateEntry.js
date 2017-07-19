@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
+import CreateEntryMutation from '../mutations/CreateEntryMutation';
 import './CreateEntry.css';
-import CreateEntryMutation from '../mutations/CreateEntryMutation'
 
 
 class CreateEntry extends Component {
+  state = {value: ''};
 
   constructor(props) {
     super(props);
-    this.state = {value: ''};
 
     this.submitEntry = this.submitEntry.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -15,10 +15,10 @@ class CreateEntry extends Component {
 
   submitEntry(event) {
     event.preventDefault();
-    CreateEntryMutation(this.state.value, (response) => {
-      console.log('Success!', response)
-      this.setState({value: ''})
-    })
+    CreateEntryMutation(
+      this.state.value,
+      () => this.setState({value: ''})
+    );
   }
 
   handleChange(event) {
