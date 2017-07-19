@@ -22,7 +22,8 @@ const updater = (proxyStore, userId) => {
   const newEntry = proxyStore.getRootField("updateEntry");
   const prevEntries = userStore.getLinkedRecords("entries");
   if (prevEntries) {
-    const changedEntryIndex = prevEntries.findIndex(e => e.id === newEntry.id)
+    console.log(prevEntries)
+    const changedEntryIndex = prevEntries.findIndex(e => e !== null && e.id === newEntry.id)
     // This is not ideal, I am sure there must be a better way
     prevEntries[changedEntryIndex].message = newEntry.message
     prevEntries[changedEntryIndex].edited = newEntry.edited
